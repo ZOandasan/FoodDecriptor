@@ -38,6 +38,10 @@ def assoc_side(request, food_id, side_id):
   Food.objects.get(id=food_id).sides.add(side_id)
   return redirect('detail', food_id=food_id)
 
+def unassoc_side(request, food_id, side_id):
+  Food.objects.get(id=food_id).sides.remove(side_id)
+  return redirect('detail', food_id=food_id)
+
 class FoodCreate(CreateView):
   model = Food
   fields = '__all__'

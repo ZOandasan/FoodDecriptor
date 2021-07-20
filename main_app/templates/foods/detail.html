@@ -55,7 +55,7 @@
                   </span>
                 </div>
                 <div class="card-action">
-                    <form action="" method="post">
+                    <form action="{% url 'unassoc_side' food.id side.id %}" method="post">
                       {% csrf_token %}
                       <button type="submit" class="btn">Remove</button>
                     </form>
@@ -66,7 +66,6 @@
         <h5>No Sides</h5>
         {% endif %}
     </div>
-
     <div class="col s6">
         <h3>Available Sides</h3>
         {% if sides.count %}
@@ -90,7 +89,6 @@
         {% endif %}
       </div>
     </div>
-
 </div>
 <script>
     const selectEl = document.getElementById('id_rating');
