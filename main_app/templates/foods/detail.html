@@ -55,17 +55,42 @@
                   </span>
                 </div>
                 <div class="card-action">
-                    <form action="{% url 'assoc_side' food.id side.id %}" method="post">
+                    <form action="" method="post">
                       {% csrf_token %}
-                      <button type="submit" class="btn">Add</button>
+                      <button type="submit" class="btn">Remove</button>
                     </form>
                 </div>
             </div>
             {% endfor %}
         {% else %}
-        <h5>All Sides Selected</h5>
+        <h5>No Sides</h5>
         {% endif %}
     </div>
+
+    <div class="col s6">
+        <h3>Available Sides</h3>
+        {% if sides.count %}
+          {% for side in sides.all %}
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">
+                  A <span>{{ side.taste }}</span> {{ side.name }}
+                </span>
+              </div>
+              <div class="card-action">
+                <form action="{% url 'assoc_side' food.id side.id %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn">Add</button>
+                </form>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <h5>{{food.name}} Already Has All Sides Available</h5>
+        {% endif %}
+      </div>
+    </div>
+
 </div>
 <script>
     const selectEl = document.getElementById('id_rating');

@@ -17,8 +17,9 @@ def foods_index(request):
 
 def foods_detail(request, food_id):
   food = Food.objects.get(id=food_id)
-  sides_food_does_not_have = Side.objects.exclude(id__in = food.sides.all().values_list('id'))
   review_form = ReviewForm()
+  print(Side.objects.exclude(id__in = food.sides.all().values_list('id')))
+  sides_food_does_not_have = Side.objects.exclude(id__in = food.sides.all().values_list('id'))
   return render(request, 'foods/detail.html', { 
     'food' :food,
     'review_form' : review_form,
