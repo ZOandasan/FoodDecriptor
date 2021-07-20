@@ -1,2 +1,5 @@
-### Commands to Remember:
-python3 manage.py runserver
+### Title:
+Food Descriptor
+
+### Usage:
+Add your Favorite Foods and watch other people review them.
